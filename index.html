@@ -4,21 +4,40 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Restaurant Maximale – Digitale Speisekarte</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
   <style>
     body {
       margin: 0;
-      font-family: "Segoe UI", sans-serif;
-      background-color: #fdfaf6;
+      font-family: 'Poppins', sans-serif;
+      background-color: #fff8f2;
       color: #333;
+      line-height: 1.6;
     }
 
     header {
-      background-color: #222;
+      background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('https://images.unsplash.com/photo-1600891964599-f61ba0e24092');
+      background-size: cover;
+      background-position: center;
       color: white;
-      padding: 2rem;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.6);
+      padding: 4rem 2rem;
       text-align: center;
       animation: fadeInDown 1s ease-in-out;
+    }
+
+    header h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+    }
+
+    header p {
+      font-size: 1.3rem;
+      font-weight: 400;
     }
 
     main {
@@ -30,76 +49,108 @@
 
     section {
       background-color: #ffffff;
-      border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
       padding: 1.5rem;
       margin-bottom: 2rem;
-      transition: transform 0.3s;
-    }
-
-    section:hover {
-      transform: scale(1.02);
+      transition: all 0.3s ease-in-out;
     }
 
     h2 {
       margin-top: 0;
-      color: #5a3825;
+      color: #8c2f21;
+      font-size: 1.5rem;
     }
 
     a {
       display: inline-block;
-      background-color: #5a3825;
+      background-color: #8c2f21;
       color: white;
-      padding: 0.5rem 1rem;
-      border-radius: 5px;
+      padding: 0.75rem 1.25rem;
+      border-radius: 6px;
       text-decoration: none;
       margin: 1rem 0;
+      font-weight: 600;
       transition: background-color 0.3s ease;
     }
 
     a:hover {
-      background-color: #7a4e33;
+      background-color: #a53d2e;
     }
 
     img {
       display: block;
       margin: 1rem auto;
+      max-width: 100%;
     }
 
     form input,
     form select,
     form textarea {
       width: 100%;
-      padding: 0.5rem;
+      padding: 0.75rem;
       margin-top: 0.5rem;
       margin-bottom: 1rem;
       border: 1px solid #ccc;
-      border-radius: 4px;
+      border-radius: 6px;
       font-size: 1rem;
     }
 
     button[type="submit"] {
-      background-color: #5a3825;
+      background-color: #8c2f21;
       color: white;
       border: none;
       padding: 0.75rem 1.5rem;
-      border-radius: 4px;
+      border-radius: 6px;
       font-size: 1rem;
+      font-weight: 600;
       cursor: pointer;
       transition: background-color 0.3s ease;
     }
 
     button[type="submit"]:hover {
-      background-color: #7a4e33;
+      background-color: #a53d2e;
     }
 
     footer {
       text-align: center;
       padding: 1rem;
       font-size: 0.9rem;
-      background-color: #f0f0f0;
+      background-color: #f0e8e0;
       color: #555;
       animation: fadeInUp 1s ease-in-out;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .gallery img {
+      width: 100%;
+      border-radius: 8px;
+      transition: transform 0.3s;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+
+    .social-icons {
+      margin-top: 1rem;
+    }
+
+    .social-icons a {
+      margin: 0 0.5rem;
+      color: #8c2f21;
+      font-size: 1.4rem;
+      transition: color 0.3s;
+    }
+
+    .social-icons a:hover {
+      color: #a53d2e;
     }
 
     @keyframes fadeInDown {
@@ -111,24 +162,19 @@
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
+
+    @media (max-width: 600px) {
+      header h1 { font-size: 2.2rem; }
+      header p { font-size: 1rem; }
+      h2 { font-size: 1.2rem; }
+      a, button[type="submit"] { width: 100%; text-align: center; }
+    }
   </style>
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const dateInput = document.getElementById("datum");
-      dateInput.addEventListener("input", () => {
-        const date = new Date(dateInput.value);
-        if (date.getDay() === 1) {
-          alert("Montags sind keine Reservierungen möglich.");
-          dateInput.value = "";
-        }
-      });
-    });
-  </script>
 </head>
 <body>
   <header>
     <h1>Restaurant Maximale</h1>
-    <p>Willkommen – Genießen Sie unsere Speisen & Getränke</p>
+    <p>Willkommen – Genießen Sie unsere italienischen Spezialitäten</p>
   </header>
 
   <main>
@@ -137,6 +183,15 @@
       <p>Scannen Sie den QR-Code oder klicken Sie hier:</p>
       <a href="Restaurant Beispiel.pdf" target="_blank">📄 Speisekarte öffnen</a>
       <img src="qr-code.png" alt="QR-Code zur Speisekarte" width="200" />
+    </section>
+
+    <section>
+      <h2>🍝 Einblicke in unsere Küche</h2>
+      <div class="gallery">
+        <img src="https://source.unsplash.com/featured/?pizza" alt="Pizza">
+        <img src="https://source.unsplash.com/featured/?pasta" alt="Pasta">
+        <img src="https://source.unsplash.com/featured/?italian-dessert" alt="Dessert">
+      </div>
     </section>
 
     <section>
@@ -153,6 +208,7 @@
       <h2>📅 Reservierung</h2>
       <form action="https://formsubmit.co/czapitech.it@gmail.com" method="POST">
         <input type="hidden" name="_next" value="https://czapitechit.github.io/showcase/danke.html">
+
         <label for="name">Name:</label>
         <input type="text" id="name" name="Name" required>
 
@@ -184,6 +240,24 @@
 
   <footer>
     <p>© 2025 Restaurant Maximale · Website by czapitech.it</p>
+    <div class="social-icons">
+      <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="#" title="Facebook"><i class="fab fa-facebook"></i></a>
+      <a href="#" title="Google Maps"><i class="fas fa-map-marker-alt"></i></a>
+    </div>
   </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const dateInput = document.getElementById("datum");
+      dateInput.addEventListener("input", () => {
+        const date = new Date(dateInput.value);
+        if (date.getDay() === 1) {
+          alert("Montags sind keine Reservierungen möglich.");
+          dateInput.value = "";
+        }
+      });
+    });
+  </script>
 </body>
 </html>
