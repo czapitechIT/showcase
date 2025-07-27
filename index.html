@@ -5,6 +5,125 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Restaurant Maximale – Digitale Speisekarte</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", sans-serif;
+      background-color: #fdfaf6;
+      color: #333;
+    }
+
+    header {
+      background-color: #222;
+      color: white;
+      padding: 2rem;
+      text-align: center;
+      animation: fadeInDown 1s ease-in-out;
+    }
+
+    main {
+      padding: 2rem;
+      max-width: 800px;
+      margin: 0 auto;
+      animation: fadeInUp 1s ease-in-out;
+    }
+
+    section {
+      background-color: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      transition: transform 0.3s;
+    }
+
+    section:hover {
+      transform: scale(1.02);
+    }
+
+    h2 {
+      margin-top: 0;
+      color: #5a3825;
+    }
+
+    a {
+      display: inline-block;
+      background-color: #5a3825;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      text-decoration: none;
+      margin: 1rem 0;
+      transition: background-color 0.3s ease;
+    }
+
+    a:hover {
+      background-color: #7a4e33;
+    }
+
+    img {
+      display: block;
+      margin: 1rem auto;
+    }
+
+    form input,
+    form select,
+    form textarea {
+      width: 100%;
+      padding: 0.5rem;
+      margin-top: 0.5rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 1rem;
+    }
+
+    button[type="submit"] {
+      background-color: #5a3825;
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 4px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #7a4e33;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+      background-color: #f0f0f0;
+      color: #555;
+      animation: fadeInUp 1s ease-in-out;
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const dateInput = document.getElementById("datum");
+      dateInput.addEventListener("input", () => {
+        const date = new Date(dateInput.value);
+        if (date.getDay() === 1) {
+          alert("Montags sind keine Reservierungen möglich.");
+          dateInput.value = "";
+        }
+      });
+    });
+  </script>
 </head>
 <body>
   <header>
@@ -16,13 +135,13 @@
     <section>
       <h2>📲 Digitale Speisekarte</h2>
       <p>Scannen Sie den QR-Code oder klicken Sie hier:</p>
-      <a href="Restaurant Beispiel.pdf" target="_blank">Speisekarte öffnen</a>
+      <a href="Restaurant Beispiel.pdf" target="_blank">📄 Speisekarte öffnen</a>
       <img src="qr-code.png" alt="QR-Code zur Speisekarte" width="200" />
     </section>
 
     <section>
       <h2>🕒 Öffnungszeiten</h2>
-      <p>Mo: geschlossen<br>Di–Fr: 18:00 – 22:00<br>Sa–So: 18:00 – 23:00</p>
+      <p>Mo: geschlossen<br>Di–Fr: 9:00 – 18:00<br>Sa–So: 10:00 – 20:00</p>
     </section>
 
     <section>
@@ -33,19 +152,16 @@
     <section>
       <h2>📅 Reservierung</h2>
       <form action="https://formsubmit.co/czapitech.it@gmail.com" method="POST">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_template" value="table">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="Name" required>
 
-        <label for="name">Name:</label><br>
-        <input type="text" id="name" name="Name" required><br><br>
+        <label for="anzahl">Personenanzahl:</label>
+        <input type="number" id="anzahl" name="Personenanzahl" required>
 
-        <label for="anzahl">Personenanzahl:</label><br>
-        <input type="number" id="anzahl" name="Personenanzahl" required><br><br>
+        <label for="datum">Datum:</label>
+        <input type="date" id="datum" name="Datum" required>
 
-        <label for="datum">Datum:</label><br>
-        <input type="date" id="datum" name="Datum" required><br><br>
-
-        <label for="zeit">Uhrzeit:</label><br>
+        <label for="zeit">Uhrzeit:</label>
         <select id="zeit" name="Uhrzeit" required>
           <option value="18:00">18:00 Uhr</option>
           <option value="18:30">18:30 Uhr</option>
@@ -54,20 +170,19 @@
           <option value="20:00">20:00 Uhr</option>
           <option value="20:30">20:30 Uhr</option>
           <option value="21:00">21:00 Uhr</option>
-        </select><br><br>
+        </select>
 
-        <label for="nachricht">Besondere Wünsche:</label><br>
-        <textarea id="nachricht" name="Nachricht" rows="4" cols="30"></textarea><br><br>
+        <label for="nachricht">Besondere Wünsche:</label>
+        <textarea id="nachricht" name="Nachricht" rows="4"></textarea>
 
-        <button type="submit">Reservierung absenden</button>
+        <button type="submit">Reservierung senden</button>
       </form>
       <p><small>Reservierungen möglich: Dienstag bis Sonntag, zwischen 18:00–21:00 Uhr</small></p>
     </section>
   </main>
 
   <footer>
-    <p>© 2025 Restaurante Maximale · Website by czapitech.it</p>
+    <p>© 2025 Restaurant Maximale · Website by czapitech.it</p>
   </footer>
 </body>
 </html>
-
