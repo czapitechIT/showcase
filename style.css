@@ -1,44 +1,137 @@
+/* Schriftarten & Farben */
 body {
-  font-family: Arial, sans-serif;
   margin: 0;
-  padding: 0;
-  line-height: 1.6;
-  background-color: #f9f9f9;
+  font-family: 'Poppins', sans-serif;
+  background-color: #fff8f2;
   color: #333;
+  line-height: 1.6;
 }
 
+/* Header */
 header {
-  background-color: #0a3d62;
-  color: #fff;
+  background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('https://images.unsplash.com/photo-1600891964599-f61ba0e24092');
+  background-size: cover;
+  background-position: center;
+  color: white;
   text-align: center;
-  padding: 2rem 1rem;
+  padding: 4rem 2rem;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.6);
+  animation: fadeInDown 1s ease-in-out;
 }
 
+header h1 {
+  font-family: 'Great Vibes', cursive;
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+}
+
+header p {
+  font-size: 1.3rem;
+}
+
+/* Allgemeines Layout */
 main {
-  padding: 2rem 1rem;
+  padding: 2rem;
   max-width: 800px;
-  margin: auto;
-  background: white;
-  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+  margin: 0 auto;
+  animation: fadeInUp 1s ease-in-out;
 }
 
 section {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+  padding: 1.5rem;
   margin-bottom: 2rem;
 }
 
-h1, h2 {
-  color: #0a3d62;
+/* Links & Buttons */
+a,
+button {
+  background-color: #8c2f21;
+  color: #fff;
+  border: none;
+  padding: 0.75rem 1.25rem;
+  border-radius: 6px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
 }
 
-a {
-  color: #0a3d62;
-  font-weight: bold;
+a:hover,
+button:hover {
+  background-color: #a53d2e;
 }
 
+/* Formularfelder */
+form input,
+form select,
+form textarea {
+  width: 100%;
+  padding: 0.75rem;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+/* Galerie */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+}
+
+.gallery img {
+  width: 100%;
+  border-radius: 8px;
+  transition: transform 0.3s;
+}
+
+.gallery img:hover {
+  transform: scale(1.05);
+}
+
+/* Footer */
 footer {
   text-align: center;
   padding: 1rem;
-  background-color: #f1f1f1;
   font-size: 0.9rem;
-  color: #666;
+  background-color: #f0e8e0;
+  color: #555;
+}
+
+/* Social Icons */
+.social-icons {
+  margin-top: 1rem;
+}
+
+.social-icons a {
+  margin: 0 0.5rem;
+  color: #8c2f21;
+  font-size: 1.4rem;
+}
+
+.social-icons a:hover {
+  color: #a53d2e;
+}
+
+/* Animationen */
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  header h1 { font-size: 2.2rem; }
+  header p { font-size: 1rem; }
+  h2 { font-size: 1.2rem; }
+  a, button { width: 100%; text-align: center; }
 }
