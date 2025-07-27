@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Restaurant Maximale – Digitale Speisekarte</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Restaurant Maximale</h1>
+    <p>Willkommen – Genießen Sie unsere Speisen & Getränke</p>
+  </header>
+
+  <main>
+    <section>
+      <h2>📲 Digitale Speisekarte</h2>
+      <p>Scannen Sie den QR-Code oder klicken Sie hier:</p>
+      <a href="speisekarte.pdf" target="_blank">📄 Speisekarte öffnen</a>
+      <img src="qr-code.png" alt="QR-Code zur Speisekarte" width="200" />
+    </section>
+
+    <section>
+      <h2>🕒 Öffnungszeiten</h2>
+      <p>Mo: geschlossen<br>Di–Fr: 18:00 – 22:00<br>Sa–So: 18:00 – 23:00</p>
+    </section>
+
+    <section>
+      <h2>📍 Kontakt</h2>
+      <p>Musterstraße 1, 12345 Musterstadt<br>Tel: 01234 567890<br>Email: czapitech.it@gmail.com</p>
+    </section>
+
+    <section>
+      <h2>📅 Reservierung</h2>
+      <form action="https://formsubmit.co/czapitech.it@gmail.com" method="POST">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="Name" required><br><br>
+
+        <label for="anzahl">Personenanzahl:</label><br>
+        <input type="number" id="anzahl" name="Personenanzahl" required><br><br>
+
+        <label for="datum">Datum:</label><br>
+        <input type="date" id="datum" name="Datum" required><br><br>
+
+        <label for="zeit">Uhrzeit:</label><br>
+        <select id="zeit" name="Uhrzeit" required>
+          <option value="18:00">18:00 Uhr</option>
+          <option value="18:30">18:30 Uhr</option>
+          <option value="19:00">19:00 Uhr</option>
+          <option value="19:30">19:30 Uhr</option>
+          <option value="20:00">20:00 Uhr</option>
+          <option value="20:30">20:30 Uhr</option>
+          <option value="21:00">21:00 Uhr</option>
+        </select><br><br>
+
+        <label for="nachricht">Besondere Wünsche:</label><br>
+        <textarea id="nachricht" name="Nachricht" rows="4" cols="30"></textarea><br><br>
+
+        <button type="submit">Reservierung absenden</button>
+      </form>
+      <p><small>Reservierungen möglich: Dienstag bis Sonntag, zwischen 18:00–21:00 Uhr</small></p>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Restaurante Maximale · Website by czapitech.it</p>
+  </footer>
+</body>
+</html>
+
