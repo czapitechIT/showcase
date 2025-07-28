@@ -150,6 +150,11 @@ footer {
   margin-top: 1rem;
 }
 
+.qr-code-wrapper img {
+  max-width: 200px;
+  height: auto;
+}
+
 /* Button zentriert */
 .menu-button-wrapper {
   text-align: center;
