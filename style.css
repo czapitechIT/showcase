@@ -135,3 +135,39 @@ footer {
   h2 { font-size: 1.2rem; }
   a, button { width: 100%; text-align: center; }
 }
+
+/* Kleinere Karte für Digitale Speisekarte */
+.small-card {
+  max-width: 450px;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+/* QR-Code zentrieren */
+.qr-code-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+/* Button zentriert */
+.menu-button-wrapper {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.menu-button {
+  display: inline-block;
+  background-color: #8c2f21;
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.menu-button:hover {
+  background-color: #a13c2c;
+}
+
