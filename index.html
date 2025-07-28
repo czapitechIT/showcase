@@ -258,7 +258,60 @@
   </footer>
 
   <script>
+    const APP_ID = "D37212243-F237-4CE1-BA3F-0D7B20395C65";
+    const API_KEY = "9A02DE8E-BBBC-4CB1-A04C-E4809AEFD079";
+    const BASE_URL = `https://eu-api.backendless.com/${APP_ID}/${API_KEY}/data/reservierungen`;
+  
+    async function checkReservationLimit(event) {
+      event.preventDefault();
+  
+      const name = document.getElementById("name").value.trim();
+      const datum = document.getElementById("datum").value;
+      const uhrzeit = document.getElementById("zeit").value;
+      const personen = parseInt(document.getElementById("anzahl").value);
+  
+      if (!datum || !uhrzeit || isNaN(personen)) {
+        alert("Bitte füllen Sie alle Felder korrekt aus.");
+        return;
+      }
+  
+      try {
+        const query = encodeURIComponent(`Datum='${datum}' AND Uhrzeit='${uhrzeit}'`);
+        const response = await fetch(`${BASE_URL}?where=${query}`);
+        const data = await response.json();
+        const gesamt = data.reduce((sum, r) => sum + parseInt(r.Personenanzahl || 0), 0);
+  
+        if (gesamt + personen > 20) {
+          alert("Dieses Zeitfenster ist bereits voll. Bitte wählen Sie eine andere Uhrzeit.");
+          return;
+        }
+  
+        // In Backendless speichern
+        await fetch(BASE_URL, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({ Name: name, Datum: datum, Uhrzeit: uhrzeit, Personenanzahl: personen })
+        });
+  
+        // Formular normal absenden an formsubmit
+        event.target.submit();
+  
+      } catch (err) {
+        console.error("Fehler bei der Reservierungsprüfung:", err);
+        alert("Fehler bei der Überprüfung. Bitte später erneut versuchen.");
+      }
+    }
+  
+    // Beim Laden hinzufügen
     document.addEventListener("DOMContentLoaded", () => {
+      const form = document.querySelector("form");
+      if (form) {
+        form.addEventListener("submit", checkReservationLimit);
+      }
+  
+      // Montag blockieren
       const dateInput = document.getElementById("datum");
       dateInput.addEventListener("input", () => {
         const date = new Date(dateInput.value);
@@ -269,5 +322,7 @@
       });
     });
   </script>
+  
 </body>
 </html>
+
