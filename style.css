@@ -158,6 +158,7 @@ footer {
 /* Button zentriert */
 .menu-button-wrapper {
   text-align: center;
+  justify-content: center;
   margin-top: 1rem;
 }
 
